@@ -665,7 +665,7 @@ def getVisual(link, node, path):
             if not os.path.isabs(meshfile):
                 meshfile = os.path.normpath(os.path.join(path, meshfile))
             # hack for gazebo mesh database
-            if meshfile.count('package'):
+            if meshfile.count('package://'):
                 idx0 = meshfile.find('package://')
                 meshfile = meshfile[idx0 + len('package://'):]
             if geometryElement.getElementsByTagName('mesh')[0].getAttribute('scale'):
@@ -726,7 +726,7 @@ def getCollision(link, node, path):
                 collision.geometry.scale[1] = float(meshScale[1])
                 collision.geometry.scale[2] = float(meshScale[2])
             # hack for gazebo mesh database
-            if meshfile.count('package'):
+            if meshfile.count('package://'):
                 idx0 = meshfile.find('package://')
                 meshfile = meshfile[idx0 + len('package://'):]
             extension = os.path.splitext(meshfile)[1].lower()
